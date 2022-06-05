@@ -1,0 +1,36 @@
+{
+  "name": "vite-react-rescript-starter",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "tests",
+      "type": "dev",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "reason": {
+    "react-jsx": 3
+  },
+  "bsc-flags": [
+    "-open Cx"
+  ],
+  "bs-dependencies": [
+    "@rescript/react",
+    "@ryyppy/rescript-promise",
+    "rescript-webapi",
+    "rescript-classnames"
+  ],
+  "bs-dev-dependencies": [
+    "rescript-vitest"
+  ]
+}
