@@ -9,7 +9,7 @@ module LoginForm = ReForm.Make(LoginFields)
 
 @react.component
 let make = () => {
-  let (_, setUser, _) = User.useUser()
+  let (_, setUser, _) = Hooks.useUser()
   let form: LoginForm.api = LoginForm.use(
     ~validationStrategy=OnChange,
     ~initialState={

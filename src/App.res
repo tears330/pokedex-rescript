@@ -10,9 +10,9 @@ let isAuth = (page: unit => React.element, user: Types.Codecs.t_user, isLoading)
 
 @react.component
 let make = () => {
-  let route = Route.useRoute()
+  let route = Hooks.useRoute()
 
-  let (user, _, isLoading) = User.useUser()
+  let (user, _, isLoading) = Hooks.useUser()
 
   switch route {
   | Home => isAuth(() => <Redirect to="/pokedex" />, user, isLoading)

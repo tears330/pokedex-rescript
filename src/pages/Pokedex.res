@@ -1,6 +1,7 @@
 @react.component
-let make = (~routeParams: Route.t_pokedex_params) => {
+let make = (~routeParams: Hooks.t_pokedex_params) => {
   let {pokemonId, pageNo} = routeParams
+
   let {loading: pokemonLoading, data: pokemon} = Api.FetchPokemonDetail.use(
     ~skip=pokemonId->Belt_Option.isNone,
     {
@@ -10,7 +11,7 @@ let make = (~routeParams: Route.t_pokedex_params) => {
 
   let {loading: listLoading, error: listError, data: list} = Api.FetchPokemonList.use()
 
-  let handleRouteChange = React.useCallback2(({pageNo, pokemonId}: Route.t_pokedex_params) => {
+  let handleRouteChange = React.useCallback2(({pageNo, pokemonId}: Hooks.t_pokedex_params) => {
     RescriptReactRouter.push(
       `/pokedex/${pageNo->Belt_Option.getWithDefault("1")}/${pokemonId->Belt_Option.getWithDefault(
           "",
