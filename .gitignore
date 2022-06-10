@@ -11,4 +11,4 @@ dist-ssr
 *.bs.js
 
 #graphql-ppx
-.graphql_ppx_cache/**
+.graphql_ppx_cache
