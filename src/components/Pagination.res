@@ -26,6 +26,8 @@ let make = (
         <Button disabled={current === 1} onClick={_ => onChange(~pageNo=current - 1)}>
           {"Prev"->React.string}
         </Button>
+      </li>
+      <li>
         <Button disabled={current === pageCount} onClick={_ => onChange(~pageNo=current + 1)}>
           {"Next"->React.string}
         </Button>

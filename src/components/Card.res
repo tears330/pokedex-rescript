@@ -14,7 +14,7 @@ let make = (
       className,
     ])}
     ?onClick>
-    <img width="44" height="44" className="rounded-full" src={img} alt={title} />
+    <img className="rounded-full w-[44px] h-[44px]" src={img} alt={title} />
     <div className="text-lg font-bold text-primary ml-6 mr-3"> {highlight->React.string} </div>
     <div className="text-lg font-bold text-white-800"> {title->React.string} </div>
   </div>

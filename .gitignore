@@ -9,3 +9,6 @@ dist-ssr
 .merlin
 /lib/
 *.bs.js
+
+#graphql-ppx
+.graphql_ppx_cache/**

@@ -21,6 +21,19 @@
   "reason": {
     "react-jsx": 3
   },
+  "graphql": {
+    "apolloMode": true,
+    "extendMutation": "ApolloClient.GraphQL_PPX.ExtendMutation",
+    "extendQuery": "ApolloClient.GraphQL_PPX.ExtendQuery",
+    "extendSubscription": "ApolloClient.GraphQL_PPX.ExtendSubscription",
+    "templateTagReturnType": "ApolloClient.GraphQL_PPX.templateTagReturnType",
+    "templateTagImport": "gql",
+    "templateTagLocation": "@apollo/client",
+    "templateTagIsFunction": true
+  },
+  "ppx-flags": [
+    "@reasonml-community/graphql-ppx/ppx"
+  ],
   "bsc-flags": [
     "-open Cx"
   ],
@@ -28,7 +41,9 @@
     "@rescript/react",
     "@ryyppy/rescript-promise",
     "rescript-webapi",
-    "rescript-classnames"
+    "rescript-classnames",
+    "rescript-apollo-client",
+    "rescript-jzon"
   ],
   "bs-dev-dependencies": [
     "rescript-vitest"

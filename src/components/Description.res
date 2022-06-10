@@ -13,7 +13,8 @@ module Item = {
 let make = (~title=?, ~children) => {
   <div className="flex flex-col w-full">
     {switch title {
-    | Some(title) => <h3 className="text-2xl font-bold text-white-800 mb-5"> {title} </h3>
+    | Some(title) =>
+      <h3 className="text-2xl font-bold text-white-800 mb-5"> {title->React.string} </h3>
     | None => React.null
     }}
     <ul className="text-white-800 px-5"> {children} </ul>
