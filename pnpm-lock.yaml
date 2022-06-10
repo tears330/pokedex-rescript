@@ -5,6 +5,7 @@ specifiers:
   '@jihchi/vite-plugin-rescript': ^2.1.0
   '@reasonml-community/graphql-ppx': ^1.2.3
   '@rescript/react': ^0.10.3
+  '@rescriptbr/reform': '11'
   '@ryyppy/rescript-promise': ^2.1.0
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.1.1
@@ -12,9 +13,11 @@ specifiers:
   autoprefixer: ^10.4.7
   graphql: ^16.5.0
   jsdom: ^19.0.0
+  lenses-ppx: ^6.1.10
   postcss: ^8.4.14
   react: ^18.1.0
   react-dom: ^18.1.0
+  reschema: ^2.2.0
   rescript: ^9.1.3
   rescript-apollo-client: ^3.1.0
   rescript-classnames: ^6.0.0
@@ -28,10 +31,12 @@ specifiers:
 dependencies:
   '@apollo/client': 3.6.6_7oyq4t3ocdziwagw7zfqg4youi
   '@rescript/react': 0.10.3_ef5jwxihqo6n7gxfmzogljlgcm
+  '@rescriptbr/reform': 11.0.2_v2ydw6tvwnbgjzv6xmoyyvfxfe
   '@ryyppy/rescript-promise': 2.1.0
   graphql: 16.5.0
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
+  reschema: 2.2.0
   rescript-apollo-client: 3.1.0_4tbl53g7xfiuueugzko3qu2ymi
   rescript-classnames: 6.0.0
   rescript-jzon: 1.3.0
@@ -45,6 +50,7 @@ devDependencies:
   '@vitejs/plugin-react-refresh': 1.3.6
   autoprefixer: 10.4.7_postcss@8.4.14
   jsdom: 19.0.0
+  lenses-ppx: 6.1.10
   postcss: 8.4.14
   rescript: 9.1.4
   rescript-vitest: 0.2.0_o6yhatze7jxvw3vbj5om3iuibq
@@ -408,6 +414,21 @@ packages:
     dependencies:
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
+    dev: false
+
+  /@rescriptbr/reform/11.0.2_v2ydw6tvwnbgjzv6xmoyyvfxfe:
+    resolution: {integrity: sha512-4C4iZQ5oQKhG1hLc0fJM2Dn47zQYegDGV7Qgp18nQX/3nVNg4JrlP3Fx9eD8NvqUmd3V5ew710Y+TU5FNS8n6A==}
+    peerDependencies:
+      '@rescript/react': ^0.10.1
+      rescript: ^9.1.1
+    dependencies:
+      '@rescript/react': 0.10.3_ef5jwxihqo6n7gxfmzogljlgcm
+      reschema: 2.2.0
+      rescript: 9.1.4
+      rescript-react-update: 3.0.2_gr34b6744tawnklnhpwiqtc6q4
+    transitivePeerDependencies:
+      - react
+      - react-dom
     dev: false
 
   /@rollup/pluginutils/4.2.1:
@@ -1495,6 +1516,11 @@ packages:
     hasBin: true
     dev: true
 
+  /lenses-ppx/6.1.10:
+    resolution: {integrity: sha512-zN1RxPAvrKZtV7AqoUCjhSrS5NvjEg7isdde3G7eWUcVwcTzggM65mS1CuoVH5zgWB0JAF1VDmnli29DDQzbYQ==}
+    requiresBuild: true
+    dev: true
+
   /levn/0.3.0:
     resolution: {integrity: sha512-0OO4y2iOHix2W6ujICbKIaEQXvFQHue65vUG3pb5EUomzPI90z9hsA1VsO/dbIIpC53J8gxM9Q4Oho0jrCM/yA==}
     engines: {node: '>= 0.8.0'}
@@ -1822,6 +1848,10 @@ packages:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
     dev: true
 
+  /reschema/2.2.0:
+    resolution: {integrity: sha512-vkFNYm2GEqrmoK+n1xomn/EXgltvCfqmowMxXkr2IBa6Zw0JItunzOap73PaS9DUGak0h6xHoIOciGcq+LC9cg==}
+    dev: false
+
   /rescript-apollo-client/3.1.0_4tbl53g7xfiuueugzko3qu2ymi:
     resolution: {integrity: sha512-nkHRNNP5FRaOzDCqcBW2awHPBWvDBLEET+Ngzuq9mPeD/V/eJcFeuoby0r9of8TzXfJokfWqItoCxDvZntndMw==}
     peerDependencies:
@@ -1844,6 +1874,18 @@ packages:
 
   /rescript-jzon/1.3.0:
     resolution: {integrity: sha512-1fKPg7xqx55PWWr+4Z6bImtfGIlGmgKIZjoIeoReXLDTuAOj2Zfr08Pl5eCLYATnOUINIAXWP4JbiZELtOzZ5g==}
+    dev: false
+
+  /rescript-react-update/3.0.2_gr34b6744tawnklnhpwiqtc6q4:
+    resolution: {integrity: sha512-oOOaeWma6XEhfZwlB/hB6u+UfYtuHjWS4RpoBeE8NbPX60GYLx5BLoVjEqLKoqXFPJv/2ZgghOKBn2LZo0VaJg==}
+    peerDependencies:
+      '@rescript/react': ^0.10.1
+      react: ^16.8.0 || ^17.0.0
+      react-dom: ^16.8.0 || ^17.0.0
+    dependencies:
+      '@rescript/react': 0.10.3_ef5jwxihqo6n7gxfmzogljlgcm
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
     dev: false
 
   /rescript-vitest/0.2.0_o6yhatze7jxvw3vbj5om3iuibq:

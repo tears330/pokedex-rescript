@@ -1,12 +1,10 @@
 %%raw("import './app.css'")
 
-let isAuth = (page: unit => React.element, user: Types.Codecs.t_user) => {
-  switch user {
-  | Some(_) => page()
-  | None => {
-      RescriptReactRouter.push("/login")
-      React.null
-    }
+let isAuth = (page: unit => React.element, user: Types.Codecs.t_user, isLoading) => {
+  switch (user, isLoading) {
+  | (_, true) => React.null
+  | (Some(_), false) => page()
+  | (None, false) => <Redirect to="/login" />
   }
 }
 
@@ -14,18 +12,12 @@ let isAuth = (page: unit => React.element, user: Types.Codecs.t_user) => {
 let make = () => {
   let route = Route.useRoute()
 
-  let (user, _) = User.useUser()
+  let (user, _, isLoading) = User.useUser()
 
   switch route {
-  | Login => React.null
-  | Pokedex(pageNo, pokemonId) =>
-    isAuth(
-      () =>
-        <Pokedex
-          pageNo={pageNo->Belt_Int.fromString->Belt_Option.getWithDefault(1)} pokemonId={pokemonId}
-        />,
-      user,
-    )
+  | Home => isAuth(() => <Redirect to="/pokedex" />, user, isLoading)
+  | Login => <Login />
+  | Pokedex(routeParams) => isAuth(() => <Pokedex routeParams />, user, isLoading)
   | NotFound => "404 Page"->React.string
   }
 }

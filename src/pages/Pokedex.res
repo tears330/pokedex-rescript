@@ -1,23 +1,33 @@
 @react.component
-let make = (~pageNo: int, ~pokemonId: string) => {
+let make = (~routeParams: Route.t_pokedex_params) => {
+  let {pokemonId, pageNo} = routeParams
   let {loading: pokemonLoading, data: pokemon} = Api.FetchPokemonDetail.use(
-    ~skip=pokemonId === "",
+    ~skip=pokemonId->Belt_Option.isNone,
     {
-      id: pokemonId,
+      id: pokemonId->Belt.Option.getWithDefault(""),
     },
   )
 
   let {loading: listLoading, error: listError, data: list} = Api.FetchPokemonList.use()
 
-  let handleRouteChange = (~currPokemonId=pokemonId, ~currPageNo=pageNo, ()) =>
-    RescriptReactRouter.push(`/pokedex/${currPageNo->Belt_Int.toString}/${currPokemonId}`)
+  let handleRouteChange = React.useCallback2(({pageNo, pokemonId}: Route.t_pokedex_params) => {
+    RescriptReactRouter.push(
+      `/pokedex/${pageNo->Belt_Option.getWithDefault("1")}/${pokemonId->Belt_Option.getWithDefault(
+          "",
+        )}`,
+    )
+  }, (pokemonId, pageNo))
 
   <div className="w-screen h-screen flex justify-center items-center bg-dark-200">
     <div className="flex w-10/12 h-[80vh] overflow-hidden rounded-lg lg:flex-row">
       <div className="lg:w-1/3 lg:min-w-fit w-0 min-w-0">
         <List
-          current={pageNo}
-          onPageChange={(~pageNo) => handleRouteChange(~currPageNo=pageNo, ())}
+          current={pageNo
+          ->Belt_Option.getWithDefault("")
+          ->Belt_Int.fromString
+          ->Belt_Option.getWithDefault(1)}
+          onPageChange={(~pageNo) =>
+            handleRouteChange({pageNo: Some(pageNo->Belt_Int.toString), pokemonId: pokemonId})}
           data={list->Belt.Option.flatMap(item => item.pokemons)}
           error=listError
           dataKey={(~item) => {item->Belt_Option.mapWithDefault("id", item => item.id)}}
@@ -25,8 +35,8 @@ let make = (~pageNo: int, ~pokemonId: string) => {
             switch item {
             | Some(item) =>
               <Card
-                selected={pokemonId === item.id}
-                onClick={_ => handleRouteChange(~currPokemonId=item.id, ())}
+                selected={pokemonId->Belt.Option.getWithDefault("") === item.id}
+                onClick={_ => handleRouteChange({pokemonId: Some(item.id), pageNo: pageNo})}
                 title={item.name->Belt_Option.getWithDefault("")}
                 img={item.image->Belt_Option.getWithDefault("")}
                 highlight={item.number->Belt_Option.getWithDefault("")}
@@ -41,7 +51,7 @@ let make = (~pageNo: int, ~pokemonId: string) => {
         <PokemonDetail
           loading={pokemonLoading}
           data={pokemon->Belt.Option.flatMap(item => item.pokemon)}
-          onChange={(~item) => handleRouteChange(~currPokemonId=item.id, ())}
+          onChange={(~item) => handleRouteChange({pokemonId: Some(item.id), pageNo: pageNo})}
         />
       </div>
     </div>

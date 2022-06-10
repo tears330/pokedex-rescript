@@ -1,5 +1,5 @@
 @react.component
-let make = (
+let make = React.memo((
   ~pageSize: int,
   ~current: int,
   ~total: int,
@@ -34,4 +34,4 @@ let make = (
       </li>
     </ul>
   </section>
-}
+})

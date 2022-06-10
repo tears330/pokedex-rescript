@@ -2,14 +2,21 @@
 
 let useUser = () => {
   let (user, setUser) = React.useState(_ => Types.Codecs.None)
+  let (isLoading, setIsLoading) = React.useState(_ => true)
 
   React.useEffect0(() => {
     switch localStorage
     ->Dom.Storage2.getItem("user")
     ->Belt_Option.getWithDefault("")
     ->Jzon.decodeStringWith(Types.Codecs.user) {
-    | Ok(user) => setUser(_ => Some(user))
-    | _ => setUser(_ => None)
+    | Ok(user) => {
+        setIsLoading(_ => false)
+        setUser(_ => Some(user))
+      }
+    | _ => {
+        setIsLoading(_ => false)
+        setUser(_ => None)
+      }
     }
 
     None
@@ -24,5 +31,5 @@ let useUser = () => {
     None
   }, [user])
 
-  (user, setUser)
+  (user, setUser, isLoading)
 }

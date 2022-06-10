@@ -31,7 +31,7 @@ let make = React.memo((
     ])}
     ?type_
     ?onClick
-    disabled={disabled}>
+    disabled>
     {loading ? <Spin /> : React.null} {children}
   </button>
 })

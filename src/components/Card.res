@@ -1,5 +1,5 @@
 @react.component
-let make = (
+let make = React.memo((
   ~selected: bool,
   ~img: string,
   ~highlight: string,
@@ -18,4 +18,4 @@ let make = (
     <div className="text-lg font-bold text-primary ml-6 mr-3"> {highlight->React.string} </div>
     <div className="text-lg font-bold text-white-800"> {title->React.string} </div>
   </div>
-}
+})

@@ -32,7 +32,8 @@
     "templateTagIsFunction": true
   },
   "ppx-flags": [
-    "@reasonml-community/graphql-ppx/ppx"
+    "@reasonml-community/graphql-ppx/ppx",
+    "lenses-ppx/ppx"
   ],
   "bsc-flags": [
     "-open Cx"
@@ -43,7 +44,9 @@
     "rescript-webapi",
     "rescript-classnames",
     "rescript-apollo-client",
-    "rescript-jzon"
+    "rescript-jzon",
+    "@rescriptbr/reform",
+    "reschema"
   ],
   "bs-dev-dependencies": [
     "rescript-vitest"
