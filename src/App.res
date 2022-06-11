@@ -12,11 +12,11 @@ let isAuth = (page: unit => React.element, user: Types.Codecs.t_user, isLoading)
 let make = () => {
   let route = Hooks.useRoute()
 
-  let (user, _, isLoading) = Hooks.useUser()
+  let (user, setUser, isLoading) = Hooks.useUser()
 
   switch route {
   | Home => isAuth(() => <Redirect to="/pokedex" />, user, isLoading)
-  | Login => <Login />
+  | Login => <Login setUser />
   | Pokedex(routeParams) => isAuth(() => <Pokedex routeParams />, user, isLoading)
   | NotFound => "404 Page"->React.string
   }

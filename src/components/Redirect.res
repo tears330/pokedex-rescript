@@ -1,5 +1,9 @@
 @react.component
 let make = (~to) => {
-  RescriptReactRouter.push(to)
+  React.useEffect0(() => {
+    RescriptReactRouter.push(to)
+    None
+  })
+
   React.null
 }

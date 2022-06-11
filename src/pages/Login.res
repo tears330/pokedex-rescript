@@ -8,8 +8,7 @@ module LoginFields = %lenses(
 module LoginForm = ReForm.Make(LoginFields)
 
 @react.component
-let make = () => {
-  let (_, setUser, _) = Hooks.useUser()
+let make = (~setUser: (Types.Codecs.t_user => Types.Codecs.t_user) => unit) => {
   let form: LoginForm.api = LoginForm.use(
     ~validationStrategy=OnChange,
     ~initialState={
