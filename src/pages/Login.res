@@ -20,7 +20,7 @@ let make = () => {
       send(SetFormState(ReForm.Submitting))
       let _ = Js.Global.setTimeout(() => {
         if state.values.username === "admin" && state.values.password === "admin" {
-          setUser(_ => Some({name: "123"}))
+          setUser(_ => Some({name: "admin"}))
           RescriptReactRouter.push("/")
         } else {
           send(RaiseSubmitFailed(Some("Invalid username or password")))

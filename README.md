@@ -11,8 +11,6 @@
 ## Getting Started
 
 ```sh
-npx degit jihchi/vitejs-template-react-rescript my-vitejs-react-rescript
-cd my-vitejs-react-rescript
-npm i
-npm start
+pnpm i
+pnpm start
 ```
