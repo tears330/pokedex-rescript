@@ -1,4 +1,4 @@
-%%raw("import './app.css'")
+%%raw("import './App.css'")
 
 let isAuth = (page: unit => React.element, user: Types.Codecs.t_user, isLoading) => {
   switch (user, isLoading) {
